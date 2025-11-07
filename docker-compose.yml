@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: numbers_db  # ← это создаст базу автоматически!
+      POSTGRES_USER: number_postgres
+      POSTGRES_PASSWORD: number_root
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    container_name: numbers-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/numbers_db
+      SPRING_DATASOURCE_USERNAME: number_postgres
+      SPRING_DATASOURCE_PASSWORD: number_root
+    depends_on:
+      - postgres
