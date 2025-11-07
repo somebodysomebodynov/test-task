@@ -11,6 +11,7 @@ public class NumberService {
 	public NumberService(NumberRepository repository) {
 		this.repository = repository;
 	}
+	@Transactional
 	public List<Double> createNumber(Double value) {
 		var entity = new NumberEntity(value);
 		repository.save(entity);
