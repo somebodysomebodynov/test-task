@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  master_postgres:
+    container_name: my_postgres_container
+    image: postgres:13.3
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  myapp:
+    build: .
+    container_name: myapp_container
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://master_postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - master_postgres
+
+volumes:
+  postgres_data:

@@ -1,0 +1,12 @@
+com\example\testtask\mapper\NumberMapperImpl.class
+com\example\testtask\dto\NumberViewDto.class
+com\example\testtask\entity\Number.class
+com\example\testtask\dto\NumberCreateDto.class
+com\example\testtask\exception\GlobalExceptionHandler.class
+com\example\testtask\service\NumberService.class
+com\example\testtask\service\NumberServiceImpl.class
+com\example\testtask\TestTaskApplication.class
+com\example\testtask\controller\NumberController.class
+com\example\testtask\repository\NumberRepository.class
+com\example\testtask\mapper\NumberMapper.class
+com\example\testtask\entity\Number$NumberBuilder.class
